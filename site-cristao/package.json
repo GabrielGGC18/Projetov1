@@ -1,0 +1,30 @@
+{
+  "name": "site-cristao",
+  "version": "1.0.0",
+  "description": "A website for Cristão, showcasing features, testimonials, and more.",
+  "main": "src/index.tsx",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vite": "^2.6.4",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.27.1"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "website"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
