@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "description": "A website for Cristão, showcasing features, testimonials, and more.",
   "main": "src/index.tsx",
+  
+  "homepage": "https://gabrielggc18.github.io/Projetov1/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  
   },
   "dependencies": {
     "react": "^17.0.2",
