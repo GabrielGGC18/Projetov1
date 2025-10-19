@@ -1,3 +1,4 @@
+// Tipos globais do projeto — adicione declarações conforme necessário
 {
   "compilerOptions": {
     "target": "esnext",

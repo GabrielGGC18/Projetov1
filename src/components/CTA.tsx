@@ -3,13 +3,19 @@ import styles from '../styles/Home.module.css';
 
 const CTA: React.FC = () => {
     return (
-        <div className={styles.ctaContainer}>
-            <h2 className={styles.ctaTitle}>Join Us Today!</h2>
-            <p className={styles.ctaDescription}>
-                Be part of our community and start your journey with us. Sign up now to get exclusive access to our resources.
-            </p>
-            <button className={styles.ctaButton}>Get Started</button>
-        </div>
+        <section id="cta" className={styles.cta}>
+            <div className="container">
+                <div className={styles.ctaInner}>
+                    <div>
+                        <h3>Junte-se à nossa comunidade</h3>
+                        <p>Receba novidades, eventos e devocionais semanais em seu e-mail.</p>
+                    </div>
+                    <div>
+                        <a className={styles.primaryBtn} href="#subscribe">Inscrever-se</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     );
 };
 

@@ -1,19 +1,21 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Projetov1/', // 👈 importante para GitHub Pages
-  server: {
-    port: 3000,
-    open: true,
-  },
-  build: {
-    outDir: 'dist',
-  },
   resolve: {
     alias: {
-      '@': '/src',
+      '@': path.resolve(__dirname, './src'),
     },
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.json'],
   },
+  server: {
+    port: 3000,
+    open: true
+  },
+  build: {
+    target: 'esnext',
+    outDir: 'dist'
+  }
 });

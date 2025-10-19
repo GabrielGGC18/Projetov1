@@ -1,36 +1,25 @@
 import React from 'react';
 import styles from '../styles/Home.module.css';
 
-const testimonialsData = [
-    {
-        name: "João Silva",
-        testimonial: "Este site mudou minha vida! Agradeço a todos os envolvidos.",
-        position: "Cliente Satisfeito"
-    },
-    {
-        name: "Maria Oliveira",
-        testimonial: "A experiência foi incrível, recomendo a todos!",
-        position: "Usuária Fiel"
-    },
-    {
-        name: "Carlos Pereira",
-        testimonial: "Serviço excepcional e suporte sempre disponível.",
-        position: "Empreendedor"
-    }
+const testimonies = [
+    {name:'Mariana', text:'Encontrei suporte e crescimento espiritual aqui.'},
+    {name:'João', text:'Os estudos semanais transformaram minha rotina.'},
+    {name:'Lucas', text:'Ambiente acolhedor e ensino fiel.'},
 ];
 
 const Testimonials: React.FC = () => {
     return (
-        <section className={styles.testimonials}>
-            <h2>Depoimentos</h2>
-            <div className={styles.testimonialList}>
-                {testimonialsData.map((item, index) => (
-                    <div key={index} className={styles.testimonialItem}>
-                        <p>"{item.testimonial}"</p>
-                        <h4>{item.name}</h4>
-                        <span>{item.position}</span>
-                    </div>
-                ))}
+        <section id="testimonials" className={styles.testimonials}>
+            <div className="container">
+                <h2>O que as pessoas dizem</h2>
+                <div className={styles.testimonialsGrid}>
+                    {testimonies.map((t, i) => (
+                        <blockquote className={styles.testimonial} key={i}>
+                            <p>“{t.text}”</p>
+                            <footer>— {t.name}</footer>
+                        </blockquote>
+                    ))}
+                </div>
             </div>
         </section>
     );

@@ -5,20 +5,12 @@ import styles from '../styles/Home.module.css';
 const Nav: React.FC = () => {
     return (
         <nav className={styles.nav}>
-            <ul className={styles.navList}>
-                <li className={styles.navItem}>
-                    <Link to="/" className={styles.navLink}>Home</Link>
-                </li>
-                <li className={styles.navItem}>
-                    <Link to="/about" className={styles.navLink}>About</Link>
-                </li>
-                <li className={styles.navItem}>
-                    <Link to="/services" className={styles.navLink}>Services</Link>
-                </li>
-                <li className={styles.navItem}>
-                    <Link to="/contact" className={styles.navLink}>Contact</Link>
-                </li>
-            </ul>
+            <div className="container" style={{display:'flex', gap:20, alignItems:'center'}}>
+                <Link to="/" className={styles.navLink}>Início</Link>
+                <Link to="/about" className={styles.navLink}>Sobre</Link>
+                <a href="#features" className={styles.navLink}>Recursos</a>
+                <a href="#testimonials" className={styles.navLink}>Depoimentos</a>
+            </div>
         </nav>
     );
 };

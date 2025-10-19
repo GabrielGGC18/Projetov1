@@ -9,17 +9,19 @@ import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
 
 const Home: React.FC = () => {
-    return (
-        <div className={styles.home}>
-            <Header />
-            <Nav />
-            <Hero />
-            <Features />
-            <Testimonials />
-            <CTA />
-            <Footer />
-        </div>
-    );
+  return (
+    <>
+      <Header />
+      <Nav />
+      <main className={styles.main}>
+        <Hero />
+        <Features />
+        <Testimonials />
+        <CTA />
+      </main>
+      <Footer />
+    </>
+  );
 };
 
 export default Home;
