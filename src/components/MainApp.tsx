@@ -17,9 +17,9 @@ export function MainApp() {
     <div className="min-h-screen bg-gradient-to-b from-pink-400 via-pink-300 to-pink-100">
       {/* Header Rosa com Cruz Metodista */}
       <div className="bg-pink-500 text-white py-8">
-        <div className="max-w-4xl mx-auto text-center px-4">
+        <div className="max-w-4xl mx-auto text-center px-4 ">
           {/* Cruz Metodista */}
-          <div className="mb-3">
+          <div className="mb-3 border-1 border-pink-500 rounded-full p-1 bg-white shadow-md">
             <ChurchAvatar size="lg" />
           </div>
           <div className="mb-4">

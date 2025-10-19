@@ -124,7 +124,7 @@
 
 @layer base {
   * {
-    @apply border border-gray-300 outline outline-pink-500/50;
+    @apply outline-pink-500/50;
   }
   body {
     @apply bg-white text-gray-900;
