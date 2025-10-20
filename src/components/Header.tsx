@@ -1,78 +1,55 @@
-import { Button } from "./ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Header(): JSX.Element {
+  const [open, setOpen] = useState(false);
+
+  const activeClass = ({ isActive }: { isActive: boolean }) =>
+    `px-3 py-2 rounded-md text-sm ${isActive ? "bg-white/20 text-white" : "text-white/90 hover:bg-white/10"}`;
 
   return (
-    <header className="bg-white shadow-sm border-b">
+    <header className="bg-gradient-to-r from-pink-500 to-pink-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <h1 className="text-xl font-semibold text-primary">
-              Igreja Esperança
-            </h1>
-          </div>
+          <NavLink to="/" className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-white/30 rounded-full flex items-center justify-center"><href class = "logo">  </href></div>
+            <span className="text-white font-bold">Site da Isis(O Nome é ProjetoKKKKKKK)</span>
+          </NavLink>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#inicio" className="text-foreground hover:text-primary transition-colors">
-              Início
-            </a>
-            <a href="#sobre" className="text-foreground hover:text-primary transition-colors">
-              Sobre Nós
-            </a>
-            <a href="#ministerios" className="text-foreground hover:text-primary transition-colors">
-              Ministérios
-            </a>
-            <a href="#eventos" className="text-foreground hover:text-primary transition-colors">
-              Eventos
-            </a>
-            <a href="#contato" className="text-foreground hover:text-primary transition-colors">
-              Contato
-            </a>
-            <Button>
-              Visite-nos
-            </Button>
+          {/* desktop */}
+          <nav className="hidden md:flex items-center gap-3">
+            <NavLink to="/about" className={activeClass}>Sobre</NavLink>
+            <NavLink to="/login" className={activeClass}>Entrar</NavLink>
           </nav>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+          {/* mobile */}
+          <div className="md:hidden flex items-center">
+            <button
+              aria-label="Abrir menu"
+              onClick={() => setOpen((s) => !s)}
+              className="p-2 rounded-md text-white hover:bg-white/10"
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+              {/* simple hamburger / close */}
+              {open ? (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t">
-            <div className="py-4 space-y-4">
-              <a href="#inicio" className="block text-foreground hover:text-primary transition-colors">
-                Início
-              </a>
-              <a href="#sobre" className="block text-foreground hover:text-primary transition-colors">
-                Sobre Nós
-              </a>
-              <a href="#ministerios" className="block text-foreground hover:text-primary transition-colors">
-                Ministérios
-              </a>
-              <a href="#eventos" className="block text-foreground hover:text-primary transition-colors">
-                Eventos
-              </a>
-              <a href="#contato" className="block text-foreground hover:text-primary transition-colors">
-                Contato
-              </a>
-              <Button className="w-full">
-                Visite-nos
-              </Button>
-            </div>
+        {/* mobile menu panel */}
+        {open && (
+          <div className="md:hidden mt-2 pb-4 border-t border-white/10">
+            <nav className="flex flex-col px-2 gap-1">
+              <NavLink to="/about" className={({isActive}) => `px-3 py-2 rounded-md ${isActive ? 'bg-white/20 text-white' : 'text-white/90 hover:bg-white/10'}`} onClick={() => setOpen(false)}>Sobre</NavLink>
+              <NavLink to="/login" className={({isActive}) => `px-3 py-2 rounded-md ${isActive ? 'bg-white/20 text-white' : 'text-white/90 hover:bg-white/10'}`} onClick={() => setOpen(false)}>Entrar</NavLink>
+            </nav>
           </div>
         )}
       </div>

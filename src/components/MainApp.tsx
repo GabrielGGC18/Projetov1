@@ -9,109 +9,134 @@ import { SacSection } from "./SacSection";
 import { RecursosSection } from "./RecursosSection";
 import { ChurchAvatar } from "./ChurchAvatar";
 import { BookOpen, Heart, Users, Headphones, Lightbulb, Play, Music, Calendar } from "lucide-react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import LoginSection from "../pages/Login";
+import About from "../pages/About";
+import Dashboard from "../pages/Dashboard";
+import Header from "./Header";
+import Footer from "./Footer";
 
-export function MainApp() {
+
+export function MainApp(): JSX.Element {
   const [activeTab, setActiveTab] = useState("biblia");
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-400 via-pink-300 to-pink-100">
-      {/* Header Rosa com Cruz Metodista */}
-      <div className="bg-pink-500 text-white py-8">
-        <div className="max-w-4xl mx-auto text-center px-4 ">
-          {/* Cruz Metodista */}
-          <div className="mb-3 border-1 border-pink-500 rounded-full p-1 bg-white shadow-md">
-            <ChurchAvatar size="lg" />
-          </div>
-          <div className="mb-4">
-            <h1 className="text-5xl font-bold mb-2">Igreja Metodista</h1>
-            <p className="text-pink-100">Corações Aquecidos pelo Espírito Santo</p>
-          </div>
-          
-          {/* Navegação por Botões */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <Button
-              variant={activeTab === "biblia" ? "secondary" : "outline"}
-              onClick={() => setActiveTab("biblia")}
-              className={`px-6 py-3 rounded-full ${
-                activeTab === "biblia" 
-                  ? "bg-white text-pink-500 hover:bg-gray-50" 
-                  : "border-white text-white hover:bg-white/10"
-              }`}
-            >
-              <BookOpen className="w-4 h-4 mr-2" />
-              Bíblia
-            </Button>
-            <Button
-              variant={activeTab === "salmos" ? "secondary" : "outline"}
-              onClick={() => setActiveTab("salmos")}
-              className={`px-6 py-3 rounded-full ${
-                activeTab === "salmos" 
-                  ? "bg-white text-pink-500 hover:bg-gray-50" 
-                  : "border-white text-white hover:bg-white/10"
-              }`}
-            >
-              <Heart className="w-4 h-4 mr-2" />
-              Salmos
-            </Button>
-            <Button
-              variant={activeTab === "chat" ? "secondary" : "outline"}
-              onClick={() => setActiveTab("chat")}
-              className={`px-6 py-3 rounded-full ${
-                activeTab === "chat" 
-                  ? "bg-white text-pink-500 hover:bg-gray-50" 
-                  : "border-white text-white hover:bg-white/10"
-              }`}
-            >
-              <Users className="w-4 h-4 mr-2" />
-              Discípulos
-            </Button>
-            <Button
-              variant={activeTab === "sac" ? "secondary" : "outline"}
-              onClick={() => setActiveTab("sac")}
-              className={`px-6 py-3 rounded-full ${
-                activeTab === "sac" 
-                  ? "bg-white text-pink-500 hover:bg-gray-50" 
-                  : "border-white text-white hover:bg-white/10"
-              }`}
-            >
-              <Headphones className="w-4 h-4 mr-2" />
-              Pastoral
-            </Button>
-            <Button
-              variant={activeTab === "recursos" ? "secondary" : "outline"}
-              onClick={() => setActiveTab("recursos")}
-              className={`px-6 py-3 rounded-full ${
-                activeTab === "recursos" 
-                  ? "bg-white text-pink-500 hover:bg-gray-50" 
-                  : "border-white text-white hover:bg-white/10"
-              }`}
-            >
-              <Lightbulb className="w-4 h-4 mr-2" />
-              Ministérios
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      {/* Frase Inspiracional */}
-      <div className="bg-pink-200 text-pink-800 py-6">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h2 className="text-3xl font-light tracking-wide">
-            "O melhor de tudo é que Deus está conosco"
-          </h2>
-          <p className="text-pink-600 mt-2 text-lg">- John Wesley</p>
-        </div>
-      </div>
-
-      {/* Conteúdo das Abas */}
-      <div className="py-8">
-        {activeTab === "biblia" && <BibleSection />}
-        {activeTab === "salmos" && <SalmosSection />}
-        {activeTab === "chat" && <ChatSection />}
-        {activeTab === "sac" && <SacSection />}
-        {activeTab === "recursos" && <RecursosSection />}
+  const DashboardPlaceholder: React.FC = () => (
+    <div className="min-h-screen flex items-center justify-center bg-pink-50">
+      <div className="bg-white rounded-lg shadow-md p-8 max-w-xl w-full text-center">
+        <h2 className="text-2xl font-semibold text-pink-600 mb-4">Dashboard</h2>
+        <p className="text-sm text-gray-600">Área restrita — apenas para teste.</p>
       </div>
     </div>
+  );
+
+  return (
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <div className="min-h-screen bg-gradient-to-b from-pink-400 via-pink-300 to-pink-100">
+            {/* Header Rosa com Cruz Metodista */}
+            <div className="bg-pink-500 text-white py-8">
+              <div className="max-w-4xl mx-auto text-center px-4 ">
+                {/* Cruz Metodista */}
+                <div className="mb-3 border-1 border-pink-500 rounded-full p-1 bg-pink shadow-md">
+                  <ChurchAvatar size="lg" />
+                </div>
+                <div className="mb-4">
+                  <h1 className="text-5xl font-bold mb-2">Site da Isis</h1>
+                  <p className="text-pink-100">Corações Aquecidos pelo Espírito Santo</p>
+                </div>
+                
+                {/* Navegação por Botões */}
+                <div className="flex flex-wrap justify-center gap-3 mb-6">
+                  <Button
+                    variant={activeTab === "biblia" ? "secondary" : "outline"}
+                    onClick={() => setActiveTab("biblia")}
+                    className={`px-6 py-3 rounded-full ${
+                      activeTab === "biblia" 
+                        ? "bg-white text-pink-500 hover:bg-gray-50" 
+                        : "border-white text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <BookOpen className="w-4 h-4 mr-2 rounded-lg" />
+                    Bíblia
+                  </Button>
+                  <Button
+                    variant={activeTab === "salmos" ? "secondary" : "outline"}
+                    onClick={() => setActiveTab("salmos")}
+                    className={`px-6 py-3 rounded-full ${
+                      activeTab === "salmos" 
+                        ? "bg-white text-pink-500 hover:bg-gray-50" 
+                        : "border-white text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <Heart className="w-4 h-4 mr-2 rounded-lg" />
+                    Salmos
+                  </Button>
+                  <Button
+                    variant={activeTab === "chat" ? "secondary" : "outline"}
+                    onClick={() => setActiveTab("chat")}
+                    className={`px-6 py-3 rounded-full ${
+                      activeTab === "chat" 
+                        ? "bg-white text-pink-500 hover:bg-gray-50" 
+                        : "border-white text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <Users className="w-4 h-4 mr-2 rounded-lg" />
+                    Discípulos
+                  </Button>
+                  <Button
+                    variant={activeTab === "sac" ? "secondary" : "outline"}
+                    onClick={() => setActiveTab("sac")}
+                    className={`px-6 py-3 rounded-full ${
+                      activeTab === "sac" 
+                        ? "bg-white text-pink-500 hover:bg-gray-50" 
+                        : "border-white text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <Headphones className="w-4 h-4 mr-2 rounded-lg" />
+                    Pastoral
+                  </Button>
+                  <Button
+                    variant={activeTab === "recursos" ? "secondary" : "outline"}
+                    onClick={() => setActiveTab("recursos")}
+                    className={`px-6 py-3 rounded-full ${
+                      activeTab === "recursos" 
+                        ? "bg-white text-pink-500 hover:bg-gray-50" 
+                        : "border-white text-white hover:bg-white/10"
+                    }`}
+                  >
+                    <Lightbulb className="w-4 h-4 mr-2 rounded-lg" />
+                    Ministérios
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Frase Inspiracional */}
+            <div className="bg-pink-200 text-pink-800 py-6">
+              <div className="max-w-4xl mx-auto text-center px-4">
+                <h2 className="text-3xl font-light tracking-wide">
+                  "O melhor de tudo é que Deus está conosco"
+                </h2>
+                <p className="text-pink-600 mt-2 text-lg">- John Wesley</p>
+              </div>
+            </div>
+
+            {/* Conteúdo das Abas */}
+            <div className="py-8">
+              {activeTab === "biblia" && <BibleSection />}
+              {activeTab === "salmos" && <SalmosSection />}
+              {activeTab === "chat" && <ChatSection />}
+              {activeTab === "sac" && <SacSection />}
+              {activeTab === "recursos" && <RecursosSection />}
+            </div>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
