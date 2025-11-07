@@ -1,8 +1,14 @@
 
-  # Página Inicial 
-  ## Running the code
+  # Página Inicial do Site Caminho e Fé
+ 
+  ## O Projeto está sendo construido em:
 
-  Run `npm i` to install the dependencies.
-
-  Run `npm run dev` to start the development server.
+**FRONT-END**
+ `JavaScript` `React` `TypeScript` `Vite` `CSS` 
+**BACK-END**
+  `Python` `Django`    
+  Banco de dados
+   `MYSQL` 
+   Integração com IA
+   `DeepSeek` 
   
