@@ -5,8 +5,7 @@ DB_PATH = Path(__file__).parent / "banco_de_dados.db"
 
 nome = "Dona"
 idade = "150"
-email = "Donaana1875"
-
+email = "Donaana1875"   
 
 banco = sqlite3.connect(DB_PATH)
 cursor = banco.cursor()
