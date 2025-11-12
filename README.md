@@ -12,7 +12,7 @@
 **BACK-END**
   `Python` `Django`    
   Banco de dados
-   `MYSQL` 
+   `Postgres` 
    Integração com IA
    `DeepSeek` 
   
